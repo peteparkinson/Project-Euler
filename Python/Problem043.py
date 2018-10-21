@@ -19,6 +19,9 @@ d8d9d10=289 is divisible by 17
 Find the sum of all 0 to 9 pandigital numbers with this property.
 
 answer = 16695334890;  //correct
+
+this answer is brute force but abides by the 1 minute rule.
+needs revisited
 """
 
 
