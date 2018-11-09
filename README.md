@@ -6,5 +6,3 @@ needs attention.
 
 There are separate reference files that store data for some problems.
 for the java solutions, the reference files are 1 folder above "src".
-
-there are several problems left unsolved in python.
