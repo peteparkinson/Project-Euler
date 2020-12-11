@@ -10,59 +10,41 @@
  * answer = 6857;  //correct
  */
 
-import java.util.ArrayList;
+package projectEuler;
 
 public class Problem003 {
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		
-		long val = 600851475143L;
-		long answer = 0;
-		
-		ArrayList<Long> factors = new ArrayList<Long>();
-		ArrayList<Long> primes = new ArrayList<Long>();
-		
-		//get factors below sqrt
-		for (int i = 2; i <= Math.floor(Math.sqrt(val)); i++) {
-			if(val % i == 0){
-				factors.add((long) i);
-			}
-		}
-		//add corresponding factors (above sqrt) to factor list
-		int a = factors.size();
-		for (int i = a; i > 0; i--) {
-			if(factors.get(i-1) != Math.ceil(Math.sqrt(val)) ){
-				factors.add((long) (val / factors.get(i-1)));
-			}
-		}
-		//check factors for primeness
-		for (int i = 0; i < factors.size(); i++) {
-			if(checkPrime(factors.get(i))){
-				primes.add(factors.get(i));
-			}
-		}
-		//find largest
-		for(long i : primes){
-			if(i > answer){
-				answer = i;
-			}
-		}
-		System.out.println("Factors: " + factors);
-		System.out.println("Prime factors: " + primes);
-		if(answer == 0){
-			System.out.print(val + " is prime.");
-			if(val == 1){ System.out.println("..kind of...");}
-		}else{
-			System.out.println("Largest prime factor: " + answer);
-		}
-	}
+		long num = 600851475143L;
+		int ans = 0;
 
-	private static boolean checkPrime(Long num) {
-		boolean isPrime = true;		
-		for (int i = 2; i <= Math.ceil(Math.sqrt(num)); i++) {
-			if(num % i == 0  && num != 2){
-				isPrime = false;
+		for(int i = 2; i < Math.ceil(Math.sqrt(num)); i++) {
+			if(num % i == 0) {
+				if(isPrime(i) && i > ans) {
+					ans = i;
+				} 
+				if(isPrime(num / i) && (num / i) > ans) {
+					ans = (int) (num / i);
+				}
 			}
 		}
-		return isPrime;
+		System.out.println(ans);
+	}
+	
+	public static boolean isPrime(long num) {
+		if(num == 1) {
+			return false;
+		}
+		if(num == 2) {
+			return true;
+		}
+		
+		for(int i = 2; i <= Math.ceil(Math.sqrt(num)); i++) {
+			if(num % i == 0) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }
