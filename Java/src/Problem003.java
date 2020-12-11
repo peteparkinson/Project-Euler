@@ -3,10 +3,6 @@
  * The prime factors of 13195 are 5, 7, 13 and 29.
  * What is the largest prime factor of the number 600851475143 ?
  * 
- * 
- * The program is currently configured to show all factors, so
- * more efficiencies can be made, but I wanted to include even factors
- * 
  * answer = 6857;  //correct
  */
 
