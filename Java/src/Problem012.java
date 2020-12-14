@@ -24,38 +24,28 @@
 
 
 public class Problem012 {
-	public static void main(String[] args){
-		
-		int answer = 1;
-		int ref = 1;
-		
-		System.out.println(countFactors(749700));
-		
-		for (int i = 1; i <= 999999999; i += ref) {
-			if(countFactors(i) > countFactors(answer)){
-				answer = i;
-				System.out.println(i + ", factors: " + countFactors(i));
+	public static void main(String[] args) {
+
+		int ref = 0;
+		for(int i = 1; i < 99999; i++) {
+			ref += i;
+			if(divisorCount(ref) > 500) {
+				System.out.println(ref);
+				return;
 			}
-			if(countFactors(i) > 500){
-				System.out.println(i + " over 500 factors");
-				break;
-			}
-			ref++;
 		}
 	}
-
 	
-	
-	
-	private static int countFactors(int i) {
-		int factors = 0;
-		for (int a = 1; a <= i; a++) {
-			if(i % a == 0){
-				factors++;
-
-			}
-
+	public static int divisorCount(int n) {
+		if(n == 1) {
+			return 1;
 		}
-		return factors;
+		int count = Math.sqrt(n) * Math.sqrt(n) == n ? 1 : 2;
+		for(int i = 2; i <= Math.ceil(Math.sqrt(n)); i++) {
+			if(n % i == 0) {
+				count += 2;
+			}
+		}
+		return count;
 	}
 }
